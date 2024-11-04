@@ -1,25 +1,28 @@
+from matplotlib.figure import figaspect
 import numpy as np
 import adi
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 # Adjust sample_count to change data buffer/frame width
-sample_count = 25
+sample_count = 50
 
 fig, ax = plt.subplots()
 (line_i,) = ax.plot([], [], label="I (In-phase)")
 (line_q,) = ax.plot([], [], label="Q (Quadrature)")
-ax.set_xlim(0, sample_count)
-ax.set_ylim(-50, 50)
-ax.set_ylabel("Amplitude")
-ax.set_title("Real-Time Pluto SDR Incoming Data")
-ax.legend()
-ax.grid(True)
 
 
 def init():
+    ax.set_xlim(0, sample_count)
+    ax.set_ylim(-50, 50)
+    ax.set_ylabel("Amplitude")
+    ax.set_title("Real-Time Pluto SDR Incoming Data")
+    ax.legend()
+    ax.grid(True)
+
     line_i.set_data([], [])
     line_q.set_data([], [])
+
     return line_i, line_q
 
 
@@ -35,6 +38,6 @@ def update(frame):
 
 if __name__ == "__main__":
     sdr = adi.Pluto("ip:192.168.2.1")
-    sdr.rx_rf_bandwidth = 4000000
-    ani = FuncAnimation(fig, update, init_func=init, blit=True, interval=100)
+    sdr.rx_rf_bandwidth = 400000
+    ani = FuncAnimation(fig, update, init_func=init, blit=True, interval=50)
     plt.show()
