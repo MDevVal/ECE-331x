@@ -3,7 +3,7 @@ import adi
 import matplotlib.pyplot as plt
 
 sample_rate = 1e6  # Hz
-center_freq = 100e6  # Hz
+center_freq = 2.4e9  # Hz
 num_samps = 10000
 
 sdr = adi.Pluto("ip:192.168.2.1")
@@ -31,5 +31,4 @@ plt.imshow(
 )
 plt.xlabel("Frequency [MHz]")
 plt.ylabel("Time [s]")
-plt.draw()
-plt.pause(1)
+plt.show()
