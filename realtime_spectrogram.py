@@ -31,7 +31,7 @@ im = ax.imshow(
     cmap="viridis",
 )
 ax.set_xlabel("Frequency [MHz]")
-ax.set_ylabel("Time [s]")
+ax.set_ylabel("Time")
 ax.set_title("Live Spectrogram")
 plt.tight_layout()
 
