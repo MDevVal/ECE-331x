@@ -172,11 +172,12 @@ def main():
         print(f"Failed to connect to PlutoSDR: {e}")
         sys.exit(1)
 
-    sample_rate = 1_000_000  # 1 MSPS
+    sample_rate = 2_000_000  # 1 MSPS
     sdr.sample_rate = sample_rate
     sdr.rx_lo = 433_920_000  # 433.92 MHz
     sdr.rx_rf_bandwidth = 1_000_000  # 1 MHz
-    sdr.gain_control_mode_chan0 = "slow_attack"
+    sdr.gain_control_mode_chan0 = "manual"
+    sdr.rx_hardwaregain_chan0 = 73
     sdr.rx_enabled_channels = [0]
     sdr.rx_buffer_size = 1024 * 1024
 
