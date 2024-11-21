@@ -40,7 +40,7 @@ peak_freq_idx = np.argmax(np.abs(IQ_FFT))
 freq_offset = freqs[peak_freq_idx]
 print(f"Estimated frequency offset: {freq_offset} Hz")
 
-correction_signal = np.exp(-1j * 2 * np.pi * freq_offset * t)
+correction_signal = np.exp(-1j * 2 * np.pi * freq_offset * (t * 2))
 iq_data_corrected = iq_data * correction_signal
 
 magnitude_raw = np.abs(iq_data)
